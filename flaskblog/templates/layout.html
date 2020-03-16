@@ -12,13 +12,9 @@
 
 
 	{% if title %}
-		<title>Flask Blog test 1- {{ title }}</title>
+		<title>Flask Blog - {{ title }}</title>
 	{% else %}
-<<<<<<< HEAD
-		<title>Flask Blog test 1</title>
-=======
-		<title>Flask Blog test 3</title>
->>>>>>> 4ce2bfc0ee618b4082f5625c0de89123c22d2655
+		<title>Flask Blog</title>
 	{% endif %}
   
 </head>
@@ -37,8 +33,13 @@
             </div>
             <!-- Navbar Right Side -->
             <div class="navbar-nav">
-              <a class="nav-item nav-link" href="{{url_for('register')}}">Register</a>
-              <a class="nav-item nav-link" href="{{url_for('login')}}">Login</a>
+              {% if current_user.is_authenticated %}
+                <a class="nav-item nav-link" href="{{url_for('account')}}">Account</a>
+                <a class="nav-item nav-link" href="{{url_for('logout')}}">Logout</a>
+              {% else %}
+                <a class="nav-item nav-link" href="{{url_for('register')}}">Register</a>
+                <a class="nav-item nav-link" href="{{url_for('login')}}">Login</a>
+              {% endif %}
             </div>
           </div>
         </div>
